@@ -1,18 +1,12 @@
 (ns universal.core
-  (:require [om.core :as om :include-macros true]
+  (:require [om.next :as om :refer-macros [defui]]
+            [goog.dom :as gdom]
             [om.dom :as dom :include-macros true]))
 
 (enable-console-print!)
 
-(defonce app-state (atom {:text "Hello Chestnut!"}))
+(def app-state (atom {:count 0}))
 
-(defn root-component [app owner]
-  (reify
-    om/IRender
-    (render [_]
-      (dom/div nil (dom/h1 nil (:text app))))))
-
-(om/root
- root-component
- app-state
- {:target (js/document.getElementById "app")})
+(defn read [{:keys [state] :as env} key params]
+  (let [st @state]
+    (if-let [[_ value] (find st key)])))
