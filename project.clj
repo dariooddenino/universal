@@ -13,7 +13,11 @@
                  [ring.middleware.logger "0.5.0"]
                  [compojure "1.5.0"]
                  [environ "1.0.3"]
-                 [org.omcljs/om "1.0.0-alpha36"]
+                 [org.omcljs/om "1.0.0-alpha45"]
+                 [navis/untangled-client "0.6.0"
+                  :exclusions [cljsjs/react org.omcljs/om org.clojure/tools.reader]]
+                 [navis/untangled-server "0.6.1"
+                  :exclusions [org.clojure/clojurescript]]
                  [hiccup "1.0.5"
                   :exclusions [org.clojure/clojure]]]
 

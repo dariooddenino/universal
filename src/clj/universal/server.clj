@@ -7,20 +7,29 @@
             [ring.middleware.logger :refer [wrap-with-logger]]
             [environ.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]]
-            [hiccup.page :as hiccup])
+            [hiccup.page :as hiccup]
+            ;; [om.next :as om]
+            [om.dom :as dom]
+            ;; [universal.core :refer [reconciler Counter]]
+            )
   (:gen-class))
 
 (defn index-el []
-  (hiccup/html5
-    [:head
-     [:meta {:charset "utf-8"}]
-     [:meta {:http-equiv "X-UA-Compatible"
-             :content "IE=edge"}]
-     [:title "Universal"]
-     (hiccup/include-css "/css/style.css")]
-    [:body
-     [:section#app "Loading..."]
-     (hiccup/include-js "/js/compiled/universal.js")]))
+  (let [
+        ;; c (om/add-root! reconciler Counter nil)
+        ;; html-string (dom/render-to-str c)
+        ]
+    (hiccup/html5
+     [:head
+      [:meta {:charset "utf-8"}]
+      [:meta {:http-equiv "X-UA-Compatible"
+              :content "IE=edge"}]
+      [:title "Universal"]
+      (hiccup/include-css "/css/style.css")
+      [:body
+       [:section#app "Loading..."]
+       ;; [:section#app html-string]
+       (hiccup/include-js "/js/compiled/universal.js")]])))
 
 
 (defroutes routes
